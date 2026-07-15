@@ -1,12 +1,12 @@
 # CHEX Computers
 
-Production-ready catalogue website for CHEX Computers Ltd, built with React, TypeScript, Next.js-compatible routing, and Vinext.
+Static catalogue website for CHEX Computers Ltd, built with Next.js, React, and TypeScript for GitHub and Netlify deployment.
 
 ## Included
 
 - 227 foreign-used laptop listings
-- Search, brand, category, and availability filters
-- Paginated product catalogue
+- Search, brand, category, processor, use-case, and availability filters
+- Load-more catalogue pagination
 - Individual product specification pages
 - WhatsApp enquiry buttons
 - Responsive desktop and mobile layouts
@@ -16,26 +16,63 @@ Production-ready catalogue website for CHEX Computers Ltd, built with React, Typ
 
 ## Requirements
 
-- Node.js 22.13 or newer
+- Node.js 22 (Netlify is configured to use Node 22)
 - npm
+- Windows PowerShell, Command Prompt, macOS Terminal, or Linux shell
+
+## Windows installation
+
+1. Install Node.js 22 from <https://nodejs.org/>.
+2. Clone the repository from GitHub.
+3. Open Windows PowerShell in the repository folder.
+4. Install dependencies:
+
+```powershell
+npm install
+```
 
 ## Local development
 
-```bash
-npm install
+Start the standard Next.js development server:
+
+```powershell
 npm run dev
 ```
 
-Open the local address printed in the terminal.
+Open the local URL printed by Next.js, usually <http://localhost:3000>.
 
 ## Production build
 
-```bash
+Create the static export used by Netlify:
+
+```powershell
 npm run build
-npm run start
 ```
 
-The included production scripts target a Linux build environment such as Cloudflare or a Linux CI runner.
+The generated static site is written to:
+
+```text
+out
+```
+
+## Netlify deployment
+
+Use these Netlify build settings:
+
+- Build command: `npm run build`
+- Publish directory: `out`
+- Node version: `22`
+
+The same settings are committed in `netlify.toml`:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+```
 
 ## Catalogue data
 
@@ -56,24 +93,8 @@ app/data/products.ts
 ```text
 app/                 Pages, components, styling, and catalogue data
 public/products/     CHEX-supplied product photography
-scripts/             Build, validation, and catalogue-import scripts
-worker/              Vinext/Cloudflare worker entry point
-```
-
-## GitHub upload
-
-1. Extract the ZIP.
-2. Create an empty GitHub repository.
-3. Open a terminal inside the extracted folder.
-4. Run:
-
-```bash
-git init
-git add .
-git commit -m "Add CHEX Computers website"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPOSITORY_URL
-git push -u origin main
+scripts/             Catalogue import utility
+out/                 Generated static export after npm run build (ignored by Git)
 ```
 
 ## Important image note

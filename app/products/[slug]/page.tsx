@@ -5,6 +5,8 @@ import { ProductCard } from "../../components/ProductCard";
 import { getProduct, products } from "../../data/products";
 import { productWhatsappUrl, whatsappUrl } from "../../data/site";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() { return products.map((product) => ({ slug: product.slug })); }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
