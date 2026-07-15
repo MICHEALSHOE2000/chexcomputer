@@ -1,13 +1,12 @@
-import { env } from "cloudflare:workers";
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "./schema";
 
-export function getDb() {
-  if (!env.DB) {
-    throw new Error(
-      "Cloudflare D1 binding `DB` is unavailable. Set the `d1` field in .openai/hosting.json to `DB` or let your control plane inject the real binding values before using the database."
-    );
+type D1DatabaseLike = Parameters<typeof drizzle>[0];
+
+export function getDb(database?: D1DatabaseLike) {
+  if (!database) {
+    throw new Error("No D1 database binding is configured for the static Netlify site.");
   }
 
-  return drizzle(env.DB, { schema });
+  return drizzle(database, { schema });
 }
