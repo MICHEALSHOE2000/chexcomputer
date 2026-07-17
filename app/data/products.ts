@@ -105,8 +105,32 @@ function categoryFrom(row: CatalogueRow): ProductCategory {
   return "Business laptops";
 }
 
+const suppliedProductImages: Record<string, string[]> = {
+  "DELL LATITUDE 5530": ["/products/dell-latitude-5530.webp"],
+  "DELL PRECISION 5550(TOUCHSCREEN)": ["/products/dell-precision-5550-touchscreen.webp"],
+  "HP ZBOOK POWER G7": ["/products/hp-zbook-power-g7.webp"],
+  "HP ZBOOK FIREFLY 14 G8": ["/products/hp-zbook-firefly-14-g8.webp"],
+  "HP ZBOOK 15 G6": ["/products/hp-zbook-15-g6.webp"],
+  "DELL XPS 15 9500(TOUCHSCREEN)": ["/products/dell-xps-15-9500-touchscreen.webp"],
+  "DELL XPS 15 7590": ["/products/dell-xps-15-7590.webp"],
+  "HP ZBOOK FIREFLY 15 G7(TOUCHSCREEN)": ["/products/hp-zbook-firefly-15-g7-touchscreen.webp"],
+  "DELL LATITUDE 5420": ["/products/dell-latitude-5420.webp"],
+  "MSI GE66 RAIDER": ["/products/msi-ge66-raider.webp"],
+  "HP SPECTRE 13 X360": ["/products/hp-spectre-13-x360.webp"],
+  "ALIENWARE X17 R2": ["/products/alienware-x17-r2.webp"],
+  "DELL LATITUDE 9410X360": ["/products/dell-latitude-9410-x360.webp"],
+  "HP PROBOOK 440 G8": ["/products/hp-probook-440-g8.webp"],
+  "HP ELITEBOOK 1040 G8X360": ["/products/hp-elitebook-1040-g8-x360.webp"],
+  "ACER NITRO V16 AI GAMING LAPTOP": ["/products/acer-nitro-v16-ai-gaming-laptop.webp"],
+  "HP OMEN SLIM 16 GAMING LAPTOP": ["/products/hp-omen-slim-16-gaming-laptop.webp"],
+  "ASUS ROG ZEPHYRUS M16": ["/products/asus-rog-zephyrus-m16.webp"],
+  "LENOVO LEGION PRO 5 GEN-10": ["/products/lenovo-legion-pro-5-gen-10.webp"],
+};
+
 function imagesFor(name: string) {
   const upper = name.toUpperCase();
+  const suppliedImages = suppliedProductImages[upper];
+  if (suppliedImages) return suppliedImages;
   if (upper.includes("ELITEBOOK 840 G5")) return ["/products/hp-elitebook-840-g5-1.webp", "/products/hp-elitebook-840-g5-2.webp"];
   if (upper.includes("LATITUDE 5300") && !upper.includes("2-IN-1")) return ["/products/dell-latitude-5300-1.jpg", "/products/dell-latitude-5300-2.jpg", "/products/dell-latitude-5300-3.jpg"];
   if (upper.includes("LATITUDE 5400")) return ["/products/dell-latitude-5400-1.jpg", "/products/dell-latitude-5400-2.jpg", "/products/dell-latitude-5400-3.jpg"];

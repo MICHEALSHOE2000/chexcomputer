@@ -3,19 +3,25 @@ export const siteConfig = {
   shortName: "CHEX",
   description:
     "Tested business laptops for retail and wholesale buyers in Lagos and across Nigeria.",
-  location: "Computer Village, Ikeja, Lagos",
-  address: "Computer Village, Ikeja, Lagos — exact shop address to be confirmed",
-  phone: "",
+  location: "Suite 78, No. 8 Idowu Lane, Computer Village, Ikeja, Lagos",
+  address:
+    "No. 8 Idowu Lane, Suite 78, Computer Village, Ikeja, Ikeja Local Government, Lagos",
+  phone: "+2348061355540",
+  phoneDisplay: "08061355540",
+  whatsapp: "2348061355540",
+  whatsappDisplay: "+234 806 135 5540",
   email: "",
-  hours: "Business hours to be confirmed",
+  hours: "Call or WhatsApp before visiting",
   siteUrl: "https://chex-computers.aderintomicheal6.chatgpt.site",
 };
 
 export function whatsappUrl(message: string) {
-  const base = siteConfig.phone
-    ? `https://wa.me/${siteConfig.phone.replace(/\D/g, "")}`
-    : "https://wa.me/";
+  const base = `https://wa.me/${siteConfig.whatsapp}`;
   return `${base}?text=${encodeURIComponent(message)}`;
+}
+
+export function telUrl() {
+  return `tel:${siteConfig.phone}`;
 }
 
 export function productWhatsappUrl(name: string, path: string) {

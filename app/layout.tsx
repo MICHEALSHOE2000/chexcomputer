@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "./components/SiteHeader";
 import { SiteFooter } from "./components/SiteFooter";
-import { siteConfig, whatsappUrl } from "./data/site";
+import { siteConfig, telUrl, whatsappUrl } from "./data/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <div className="mobile-action-bar" aria-label="Quick contact actions">
-          <a href="/contact">Call / contact</a>
+          <a href={telUrl()}>Call CHEX</a>
           <a href={whatsappUrl("Hello CHEX Computers, I need help choosing a laptop.")} target="_blank" rel="noreferrer">WhatsApp</a>
         </div>
       </body>
