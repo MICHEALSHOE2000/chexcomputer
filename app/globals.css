@@ -96,6 +96,7 @@ img { display: block; max-width: 100%; }
 .section-heading h2, .why-preview h2, .order-steps h2, .review-empty h2, .faq h2, .final-cta h2 { margin: 15px 0 0; font-size: clamp(38px, 4.4vw, 62px); line-height: 1; letter-spacing: -.055em; font-weight: 620; }
 .section-intro { max-width: 440px; color: var(--muted); line-height: 1.65; }
 .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 13px; }
+.featured-footer { display: flex; justify-content: center; margin-top: 34px; }
 .product-card { min-width: 0; border: 1px solid var(--line); background: #0a0d0b; transition: transform .25s ease, border-color .25s ease; }
 .product-card:hover { transform: translateY(-5px); border-color: rgba(183,255,0,.3); }
 .product-image { position: relative; aspect-ratio: 1 / .92; overflow: hidden; display: block; background: #111512; }
